@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  # Serviço da sua aplicação Python (API)
+  app:
+    # Constrói a imagem a partir do Dockerfile no diretório atual (.)
+    build: .
+    container_name: api #nome do container
+    restart: unless-stopped
+    ports:
+      # Mapeia a porta 8000 do seu computador para a porta 8000 do contêiner
+      - "8000:8000"
+    volumes:
+      # Mapeia o código-fonte local para dentro do contêiner,
+      # permitindo o hot-reload do Uvicorn
+      - .:/app
